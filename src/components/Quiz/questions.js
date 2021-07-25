@@ -7,6 +7,7 @@ export const questions = [
 				{ answerText: 'Paris', isCorrect: true, key:3 },
 				{ answerText: 'Dublin', isCorrect: false, key:4 },
 			],
+			feedback: "this is feedback on this question"
 		},
 		{
 			questionText: 'Who is CEO of Tesla?',
@@ -16,6 +17,7 @@ export const questions = [
 				{ answerText: 'Bill Gates', isCorrect: false, key:3 },
 				{ answerText: 'Tony Stark', isCorrect: false, K3y:4 },
 			],
+			feedback: "this is feedback on this question"
 		},
 		{
 			questionText: 'The iPhone was created by which company?',
@@ -25,6 +27,7 @@ export const questions = [
 				{ answerText: 'Amazon', isCorrect: false, key:3 },
 				{ answerText: 'Microsoft', isCorrect: false, key:4 },
 			],
+			feedback: "this is feedback on this question"
 		},
 		{
 			questionText: 'How many Harry Potter books are there?',
@@ -34,5 +37,6 @@ export const questions = [
 				{ answerText: '6', isCorrect: false, key:3 },
 				{ answerText: '7', isCorrect: true, key:4 },
 			],
+			feedback: "this is feedback on this question"
 		},
 	];
