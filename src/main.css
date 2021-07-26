@@ -1,7 +1,9 @@
 :root {
-  --purple: #a64ac9;
+  --purple: #6317a9;
   --yellow: #fccd04;
   --blue: #202a52;
+  --green: #58c363;
+  --red: #ee3d64;
 }
 
 body {
@@ -18,8 +20,8 @@ body {
 /* Quiz  */
 .question-card {
   background-color: var(--purple);
-  width: 550px;
-  min-height: 300px;
+  width: 800px;
+  min-height: 450px;
   border-radius: 15px;
   padding: 20px;
   box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
@@ -40,7 +42,6 @@ body {
   margin-bottom: 12px;
 }
 .answer-section {
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -50,8 +51,7 @@ body {
 .answer-button {
   width: 100%;
   font-size: 16px;
-  color: #ffffff;
-  background-color: var(--blue);
+  color: var(--blue);
   border-color: var(--blue);
   border-radius: 20px;
   margin-bottom: 15px;
@@ -61,11 +61,25 @@ body {
   align-items: center;
   cursor: pointer;
 }
+.bg-regualar {
+  background-color: white;
+}
+.bg-correct {
+  background-color: var(--green);
+}
+.bg-incorrect {
+  background-color: var(--red);
+}
 
 button:hover {
   background-color: #555e7d;
 }
 
+.next-button {
+  float: right;
+  margin-right: 0;
+  padding: 10px;
+}
 /* progress bar component */
 .progress-bar {
   position: relative;
