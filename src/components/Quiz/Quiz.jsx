@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
 import {questions} from './questions';
-import ProgressBar from './ProgressBar';
+import ProgressBar from '../ProgressBar';
+import Score from './Score'
 
 export default function Quiz(){
     const [displayedQuestion, setDisplayedQuestion] = useState(0);
-    const [displayScore, setDisplayScore] = useState(false);
     const [score, setScore] = useState(0);
+    const [displayScore, setDisplayScore] = useState(false);
     const [displayAnswers, setDisplayAnswers] = useState(false);
     const [displayFeedback, setDisplayFeedback] = useState(false);
+
     const handleAnswerButton = (isCorrect) => {
         if (isCorrect) {
             setScore(score + 1)
@@ -31,11 +33,10 @@ export default function Quiz(){
     };
     return(
         <div className='question-card'>
-            <ProgressBar count={displayedQuestion} total = {questions.length}/>
+            <ProgressBar indexOfDisplayedQuestion = {displayedQuestion} totalNumberOfQuestions = {questions.length}/>
             {displayScore? (
-                <div className='score-section'>
-                    you scored {score} out of {questions.length}
-                </div>) : (
+                <Score numberOfCorrectAnswers = {score} totalNumberOfQuestions = {questions.length} /> ) : 
+                (
             <>
                 <div className='question-section'>
                     <div className='question-count'>Question {displayedQuestion +1} / {questions.length}</div>
