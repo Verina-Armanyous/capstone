@@ -1,13 +1,13 @@
 export const questions = [
 		{
-			questionText: 'What is the capital of France?',
+			questionText: 'What language do people in Africa speak?',
 			answerOptions: [
 				{ answerText: 'New York', isCorrect: false , key: 1},
 				{ answerText: 'London', isCorrect: false, key:2 },
 				{ answerText: 'Paris', isCorrect: true, key:3 },
 				{ answerText: 'Dublin', isCorrect: false, key:4 },
 			],
-			feedback: "this is feedback on this question"
+			feedback: "Indeed Paris is the capital of france"
 		},
 		{
 			questionText: 'Who is CEO of Tesla?',
@@ -17,7 +17,7 @@ export const questions = [
 				{ answerText: 'Bill Gates', isCorrect: false, key:3 },
 				{ answerText: 'Tony Stark', isCorrect: false, K3y:4 },
 			],
-			feedback: "this is feedback on this question"
+			feedback: "Elon Tesla is the CEO of Tesla"
 		},
 		{
 			questionText: 'The iPhone was created by which company?',
@@ -27,7 +27,7 @@ export const questions = [
 				{ answerText: 'Amazon', isCorrect: false, key:3 },
 				{ answerText: 'Microsoft', isCorrect: false, key:4 },
 			],
-			feedback: "this is feedback on this question"
+			feedback: "While all of these are tech companies, Apple is the creator of iPhone"
 		},
 		{
 			questionText: 'How many Harry Potter books are there?',
@@ -37,6 +37,6 @@ export const questions = [
 				{ answerText: '6', isCorrect: false, key:3 },
 				{ answerText: '7', isCorrect: true, key:4 },
 			],
-			feedback: "this is feedback on this question"
+			feedback: "Seven!",
 		},
 	];
