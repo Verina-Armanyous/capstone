@@ -1,13 +1,13 @@
 export const questions = [
 		{
-			questionText: 'What language do people in Africa speak?',
+			questionText: 'What is the captial of Africa?',
 			answerOptions: [
-				{ answerText: 'New York', isCorrect: false , key: 1},
-				{ answerText: 'London', isCorrect: false, key:2 },
-				{ answerText: 'Paris', isCorrect: true, key:3 },
-				{ answerText: 'Dublin', isCorrect: false, key:4 },
+				{ answerText: 'Kigali', isCorrect: false , key: 1},
+				{ answerText: 'Cairo', isCorrect: false, key:2 },
+				{ answerText: 'None of the above', isCorrect: true, key:3 },
+				{ answerText: 'Lagos', isCorrect: false, key:4 },
 			],
-			feedback: "Indeed Paris is the capital of france"
+			feedback: "Africa is a continent not a country. In fact, there is 54 countries in Africa!"
 		},
 		{
 			questionText: 'Who is CEO of Tesla?',
