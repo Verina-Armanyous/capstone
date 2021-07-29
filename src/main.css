@@ -2,8 +2,8 @@
   --purple: #6317a9;
   --yellow: #fccd04;
   --blue: #202a52;
-  --green: #58c363;
-  --red: #ee3d64;
+  --green: #a3f0a3;
+  --red: #f36565;
 }
 
 body {
@@ -39,22 +39,24 @@ body {
 }
 
 .question-text {
+  font-size: 22px;
   margin-bottom: 12px;
 }
 .answer-section {
-  display: flex;
+  margin-top: 10%;
   flex-direction: column;
-  justify-content: space-between;
+  text-align: center;
 }
 
 /* answer */
 .answer-button {
-  width: 100%;
+  width: 80%;
   font-size: 16px;
   color: var(--blue);
   border-color: var(--blue);
   border-radius: 20px;
-  margin-bottom: 15px;
+  margin: auto; 
+  margin-bottom: 10px;
   display: flex;
   padding: 10px;
   justify-content: center;
@@ -72,7 +74,7 @@ body {
 }
 
 button:hover {
-  background-color: #555e7d;
+  background-color: #a8aab1;
 }
 
 .next-button {
