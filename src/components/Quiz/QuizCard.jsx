@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import {questions} from './questions';
+import {questions} from './questions'
 import ProgressBar from '../ProgressBar';
 import Score from './Score'
+import AnswerSection from './AnswerSection'
+import QuestionText from './QuestionText';
 
-export default function Quiz(){
+export default function QuizCard(){
     const [displayedQuestion, setDisplayedQuestion] = useState(0);
     const [score, setScore] = useState(0);
     const [displayScore, setDisplayScore] = useState(false);
@@ -40,17 +42,10 @@ export default function Quiz(){
             <>
                 <div className='question-section'>
                     <div className='question-count'>Question {displayedQuestion +1} / {questions.length}</div>
-                    {displayFeedback? (<div className='question-text'>{questions[displayedQuestion].feedback}</div>):
-                    (<div className='question-text'>{questions[displayedQuestion].questionText}</div>)
+                    {displayFeedback? <QuestionText indexOfDisplayedQuestion={displayedQuestion} feedback ={true}/>:
+                    <QuestionText indexOfDisplayedQuestion={displayedQuestion} feedback ={false}/>
                      }
-
-                    <div className='answer-section'>
-                        {questions[displayedQuestion].answerOptions.map((answerOption) => {
-                            const bgColor = displayAnswers ?  answerOption.isCorrect === true? "bg-correct" : "bg-incorrect": "bg-regular";
-                        return ( 
-                        <button className = {`${bgColor} answer-button`} onClick={() => handleAnswerButton(answerOption.isCorrect)} key={answerOption.key}>{answerOption.answerText}</button>
-                        )})}
-                    </div>
+                < AnswerSection indexOfDisplayedQuestion={displayedQuestion} displayAnswers={displayAnswers} handleAnswerButton={handleAnswerButton}/>
                 </div>
             </>)}
             {displayAnswers && 

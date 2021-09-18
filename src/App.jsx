@@ -1,6 +1,7 @@
 import React from 'react';
-import Quiz from './components/Quiz/Quiz'
+import QuizCard from './components/Quiz/QuizCard'
 
 export default function App (){
-    return ( <Quiz />)
+
+    return ( <QuizCard />)
 }
