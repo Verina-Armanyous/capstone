@@ -5,7 +5,7 @@ import Score from './Score'
 import AnswerSection from './AnswerSection'
 import QuestionText from './QuestionText';
 
-export default function Quiz(){
+export default function QuizCard(){
     const [displayedQuestion, setDisplayedQuestion] = useState(0);
     const [score, setScore] = useState(0);
     const [displayScore, setDisplayScore] = useState(false);
