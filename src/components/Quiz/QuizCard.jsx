@@ -3,7 +3,7 @@ import ProgressBar from '../ProgressBar';
 import Score from './Score';
 import Answer from './Answer';
 import Question from './Question';
-import {db, storage} from "../../firebase/config";
+import {db} from "../../firebase/config";
 import {useParams } from 'react-router-dom';
 import CardMedia from '@mui/material/CardMedia';
 import Card from '@mui/material/Card';
@@ -36,7 +36,7 @@ function QuizCard(){
 
     useEffect(() => {
         getMisconceptions();
-    }, []);
+    },[]);
 
     const handleAnswerButton = (isCorrect) => {
         if (isCorrect) {
