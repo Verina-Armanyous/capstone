@@ -2,8 +2,11 @@
   --purple: #5459ca;
   --yellow: #fa9f24;
   --blue: #202a52;
-  --green: #8ed09d;
-  --red: #f57070;
+  --green: lightgreen;
+  --red: lightcoral;
+  --easy: #FFC700;
+  --medium: #AC2CC1;
+  --difficult: #365CF6;
 }
 
 body {
@@ -15,17 +18,20 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: var(--purple);
 }
 
 /* Quiz  */
+.img_url{
+  width: 90%;
+  padding: 10px;
+}
 .question-card {
   background-color: white;
-  width: 850px;
-  min-height: 450px;
+  width: 70vw;
+  min-height: 75vh;
   border-radius: 15px;
-  padding: 20px;
-  box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+  padding: 10px;
+  box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.5);
   justify-content: space-evenly;
 }
 
@@ -44,7 +50,7 @@ body {
   margin-bottom: 12px;
 }
 .answer-section {
-  margin-top: 10%;
+  margin-top: 3%;
   flex-direction: column;
   text-align: center;
 }

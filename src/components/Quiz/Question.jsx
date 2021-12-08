@@ -1,6 +1,5 @@
 import React from 'react';
-
-
+import Typography from '@mui/material/Typography';
 
 /**
  * This component shows the question displayed one at a time 
@@ -9,19 +8,19 @@ import React from 'react';
  * @param {number} indexOfDisplayedQuestion -- the number of current question 
  * @param {boolean} showFeedback -- indicates whether to show the feedback on each question 
  */
-function QuestionText({questions, indexOfDisplayedQuestion, showFeedback}) {
+function Question({questions, indexOfDisplayedQuestion, showFeedback}) {
     if (showFeedback) {
         return (  
             <div className='question-text'>
-                {questions[indexOfDisplayedQuestion].showFeedback}
+                {questions[indexOfDisplayedQuestion].feedback}
             </div>)
     }
     else{
         return (
-            <div className='question-text'>
-                    {questions[indexOfDisplayedQuestion].showFeedback}
-            </div>)
+           <Typography gutterBottom variant="h5" component="div">
+            {questions[indexOfDisplayedQuestion].questionText}
+        </Typography>
 
-    }}
+        )}}
 
-export default QuestionText;
+export default Question;

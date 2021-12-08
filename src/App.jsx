@@ -1,8 +1,8 @@
 import React from 'react';
-import QuizCard from './components/Quiz/QuizCard'
+import Home from './pages/Home'
 
 
 
 export default function App () {
-    return ( <QuizCard />)
+    return <Home/>
 }
