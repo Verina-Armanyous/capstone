@@ -28,7 +28,8 @@ function QuizCard(){
     const { level } = useParams();
     function getMisconceptions(){
         db.collection(level).get().then((item) =>{
-        const items = item.docs.map((doc) => doc.data());
+        let items = item.docs.map((doc) => doc.data());
+        items = items.sort(() => Math.random() - 0.5)
         setMisconceptions(items);
         setIsSetupComplete(true);
         })
