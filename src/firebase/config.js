@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-
 var firebaseConfig = ({
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -12,5 +11,6 @@ var firebaseConfig = ({
 
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
+var storage = firebase.storage();
   
-export default db;
+export {db, storage}

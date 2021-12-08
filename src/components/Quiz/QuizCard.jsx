@@ -1,9 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import ProgressBar from '../ProgressBar';
 import Score from './Score';
-import AnswerSection from './AnswerSection';
-import QuestionText from './QuestionText';
-import db from '../../firebaseConfig';
+import Answer from './Answer';
+import Question from './Question';
+import {db, storage} from "../../firebase/config";
+import {useParams } from 'react-router-dom';
+import CardMedia from '@mui/material/CardMedia';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
 
 
 /**
@@ -19,9 +25,9 @@ function QuizCard(){
     
     const [misconceptions, setMisconceptions] = useState([])
     const [isSetupComplete, setIsSetupComplete] = useState(false);
-
+    const { level } = useParams();
     function getMisconceptions(){
-        db.collection("misconceptions ").get().then((item) =>{
+        db.collection(level).get().then((item) =>{
         const items = item.docs.map((doc) => doc.data());
         setMisconceptions(items);
         setIsSetupComplete(true);
@@ -54,28 +60,37 @@ function QuizCard(){
         }
 
     };
-
+    
     return(
         (isSetupComplete) ?
-        <div className='question-card'>
-            <ProgressBar indexOfDisplayedQuestion = {displayedQuestion} totalNumberOfQuestions = {misconceptions.length}/>
+        <Card className='question-card' style={{padding:"20px"}}>
+            <ProgressBar indexOfDisplayedQuestion = {displayedQuestion} totalNumberOfQuestions = {misconceptions.length} level={level}/>
             {displayScore? (
-                <Score numberOfCorrectAnswers = {score} totalNumberOfQuestions = {misconceptions.length} /> ) : 
+                <Score numberOfCorrectAnswers = {score} totalNumberOfQuestions = {misconceptions.length}  level = {level}/> ) : 
                 (
             <>
-                <div className='question-section'>
-                    <div className='question-count'>Question {displayedQuestion +1} / {misconceptions.length}</div>
-                    {displayFeedback? <QuestionText questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} showFeedback ={true}/>:
-                    <QuestionText questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} showFeedback ={false}/>
+                <CardContent className='question-section'>
+                   
+                    {displayFeedback?  <>
+                    <Question questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} showFeedback ={true}/>
+                    {misconceptions[displayedQuestion].feedbackImg !=='None'? <CardMedia style ={{maxWidth:'95%', padding:'10px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={misconceptions[displayedQuestion].feedbackImg}/>:<p></p>}
+                    </>
+                    :
+                    <>
+                    <Question questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} showFeedback ={false}/>
+                    {misconceptions[displayedQuestion].questionImg !=='None'? <CardMedia style ={{maxWidth:'95%', padding:'10px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={misconceptions[displayedQuestion].questionImg}/>:<p></p>}
+                    </>
                      }
-                < AnswerSection questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} displayAnswers={displayAnswers} handleAnswerButton={handleAnswerButton}/>
-                </div>
+                < Answer questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} displayAnswers={displayAnswers} handleAnswerButton={handleAnswerButton}/>
+                </CardContent>
             </>)}
             {displayAnswers && 
-                <button onClick = {handleNextQuestion} className="next-button">
-                    Next Question
-                </button>}
-        </div>:<></>
+            <CardActions>
+                <Button onClick = {handleNextQuestion} size="small" style={{flex: "right", right: "0", padding: "10px", backgroundColor:"black", color:"white"}}>
+                    Next
+                </Button>
+            </CardActions>}
+        </Card>:<></>
     );
 }
 export default QuizCard;
