@@ -12,8 +12,8 @@ ReactDOM.render(
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="/quiz/:level" element={<QuizCard />} />
-      <Route path="/intro/:level" element={<Intro />} />
+      <Route path="quiz/:level" element={<QuizCard />} />
+      <Route path="intro/:level" element={<Intro />} />
     </Routes>
   </BrowserRouter>
   </LevelsProvider>, document.getElementById('root'))
