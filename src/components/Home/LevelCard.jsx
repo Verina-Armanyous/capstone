@@ -13,21 +13,21 @@ const buttonStyle = {
     justifyContent: 'left',
     marginLeft: 'auto',
 }
-export default function LevelCard({levelName, description, numberOfQuestions, unlocked}) {
+export default function LevelCard({level, description, numberOfQuestions, status}) {
     let style = { minWidth: 300, borderRadius:10, borderColor:'black', marginBottom:20, padding:10}
-    if (levelName === 'Easy'){
+    if (level === 'Easy'){
         const firstStyle = {
           backgroundColor: "#FFC700"
         }
         Object.assign(style, firstStyle)
     }
-    if (levelName === 'Medium'){
+    if (level === 'Medium'){
         const secondStyle = {
           backgroundColor: "#AC2CC1"
         }
         Object.assign(style, secondStyle)
     }
-    if (levelName === 'Difficult'){
+    if (level === 'Difficult'){
         const thirdStyle = {
           backgroundColor: "#365CF6"
         }
@@ -38,7 +38,7 @@ export default function LevelCard({levelName, description, numberOfQuestions, un
     <Card style = {style} variant="outlined">
       <CardContent>
         <Typography gutterBottom variant="h5" component="div" sx={{color:'white', fontWeight:'bold'}}>
-          {levelName}
+          {level}
         </Typography>
         <Typography variant="h8" color="text.secondary" sx={{color:'white'}}>
           {description}
@@ -46,7 +46,7 @@ export default function LevelCard({levelName, description, numberOfQuestions, un
       </CardContent>
       <CardActions>
         <Fab size="small" disabled >{numberOfQuestions}</Fab>
-        {unlocked && <Button to={`quiz/${levelName}`} component={RouterLink} size="medium" variant="contained" style={buttonStyle}>Start</Button>}
+        {(status ==='unlocked'|| status ==='completed') && <Button to={`/intro/${level}`} component={RouterLink} size="medium" variant="contained" style={buttonStyle}>{status}</Button>}
       </CardActions>
     </Card>
     </>

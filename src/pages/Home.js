@@ -1,10 +1,13 @@
-import React from 'react';
-import LevelCard from '../components/Home/LevelCard'
-
+import React, {useContext} from 'react';
+import LevelCard from '../components/Home/LevelCard';
+import LevelsContext from '../state/LevelsContext';
 export default function Home() {
+    const { levels} = useContext(LevelsContext);
     return <div style={{marginLeft:'auto', justifyContent:'right'}}>
-        <LevelCard levelName="Easy" description="World Media Coverage and Perceptions" numberOfQuestions = "10" unlocked={true} />
-        <LevelCard levelName="Medium" description="World Map and Geography" numberOfQuestions = "10" unlocked={false}/>
-        <LevelCard levelName="Difficult" description="World Statistics and Numbers" numberOfQuestions = "10" unlocked={false}/>
+        {
+          levels.map((level, i) => 
+            <LevelCard key={i} {...level} />
+          )
+        }
         </div>
 }
