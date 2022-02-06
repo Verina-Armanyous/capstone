@@ -4,9 +4,10 @@ const LevelsContext = createContext();
 
 export function LevelsProvider ({children}){
     const [levels, setLevels] = useLocalStorage('levels-state',[
-        {level: 'Easy', status:'unlocked', description:"World Media Coverage and Perceptions", numberOfQuestions: "10",},
-         {level: 'Medium', status:'', description:"World Map and Geography", numberOfQuestions: "10"}, 
-         {level: 'Difficult', status:'', description:"World Statistics and Numbers", numberOfQuestions:"10"} ]);
+        {level: 'Easy', status:'unlocked', description:"World Media", numberOfQuestions: "6",},
+         {level: 'Medium', status:'', description:"World Map: it's all relative", numberOfQuestions: "5"}, 
+         {level: 'Epic', status:'', description:"World Map: more maps", numberOfQuestions:"4"}, 
+         {level: 'Legendary', status:'', description:"World Statistics and Numbers", numberOfQuestions:"5"} ]);
 
     const setStatusLevel = (level, state) => {
       setLevels(levels.map(l => l.level === level ? {...l, status: state} : l))

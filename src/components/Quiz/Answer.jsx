@@ -1,6 +1,10 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Box';
+import Checkbox from '@mui/material/Checkbox';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+import CircleIcon from '@mui/icons-material/Circle';
 
 /**
  * This component shows a set of possible answers that includes one correct answer
@@ -19,7 +23,10 @@ function Answer({questions, indexOfDisplayedQuestion, displayAnswers, handleAnsw
             {questions[indexOfDisplayedQuestion].answerOptions.map((answerOption) => {
                 const bgColor = displayAnswers ?  answerOption.isCorrect === true? "bg-correct" : "bg-incorrect": "bg-regular";
             return ( 
-            <Button className = {`${bgColor} answer-button`} onClick={() => handleAnswerButton(answerOption.isCorrect)} key={answerOption.key}>{String(answerOption.answerText)}</Button>
+            <Button className = {`${bgColor} answer-button`} onClick={() => handleAnswerButton(answerOption.isCorrect)} key={answerOption.key}>
+
+                {String(answerOption.answerText)}
+            </Button>
             )})}
             </Box>
         </div>

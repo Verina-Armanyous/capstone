@@ -21,7 +21,10 @@ function Score({numberOfCorrectAnswers, totalNumberOfQuestions, level}) {
         if (level==='Easy'){
             setStatusLevel('Medium', 'unlocked')}
         else if (level==='Medium'){
-            setStatusLevel('Difficult', 'unlocked')
+            setStatusLevel('Epic', 'unlocked')
+        }
+        else if (level==='Epic'){
+            setStatusLevel('Legendary', 'unlocked')
         }
         }
 

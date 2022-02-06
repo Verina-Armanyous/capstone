@@ -61,7 +61,6 @@ function QuizCard(){
         }
 
     };
-    
     return(
         (isSetupComplete) ?
         <Card className='question-card' style={{padding:"20px"}}>
@@ -71,7 +70,6 @@ function QuizCard(){
                 (
             <>
                 <CardContent className='question-section'>
-                   
                     {displayFeedback?  <>
                     <Question questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} showFeedback ={true}/>
                     {misconceptions[displayedQuestion].feedbackImg !=='None'? <CardMedia style ={{maxWidth:'95%', padding:'10px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={misconceptions[displayedQuestion].feedbackImg}/>:<p></p>}

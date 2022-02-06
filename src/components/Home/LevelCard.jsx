@@ -14,25 +14,32 @@ const buttonStyle = {
     marginLeft: 'auto',
 }
 export default function LevelCard({level, description, numberOfQuestions, status}) {
-    let style = { minWidth: 300, borderRadius:10, borderColor:'black', marginBottom:20, padding:10}
+    let style = { minWidth: 300, height:140,borderRadius:10, borderColor:'black', marginBottom:20, padding:5}
     if (level === 'Easy'){
         const firstStyle = {
-          backgroundColor: "#FFC700"
+          backgroundColor: "#ffcc01"
         }
         Object.assign(style, firstStyle)
     }
     if (level === 'Medium'){
         const secondStyle = {
-          backgroundColor: "#AC2CC1"
+          backgroundColor: "#db2727"
         }
         Object.assign(style, secondStyle)
     }
-    if (level === 'Difficult'){
+    if (level === 'Epic'){
         const thirdStyle = {
-          backgroundColor: "#365CF6"
+          backgroundColor: "#7c376f"
         }
         Object.assign(style, thirdStyle)
     }
+    if (level === 'Legendary'){
+        const thirdStyle = {
+          backgroundColor: "#2e22b5"
+        }
+        Object.assign(style, thirdStyle)
+    }
+   
   return (
       <>
     <Card style = {style} variant="outlined">
@@ -45,7 +52,6 @@ export default function LevelCard({level, description, numberOfQuestions, status
         </Typography>
       </CardContent>
       <CardActions>
-        <Fab size="small" disabled >{numberOfQuestions}</Fab>
         {(status ==='unlocked'|| status ==='completed') && <Button to={`/intro/${level}`} component={RouterLink} size="medium" variant="contained" style={buttonStyle}>{status}</Button>}
       </CardActions>
     </Card>
