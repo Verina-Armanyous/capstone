@@ -5,8 +5,6 @@ import Checkbox from '@mui/material/Checkbox';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import CircleIcon from '@mui/icons-material/Circle';
-import correctSound from '../../sounds/correct-answer.mp3';
-import wrongSound from '../../sounds/wrong-answer.mp3';
 /**
  * This component shows a set of possible answers that includes one correct answer
  * @param {Array} questions This includes a list of questions where each question 
