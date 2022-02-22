@@ -10,7 +10,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
-
+import correctSound from '../../sounds/correct-answer.mp3';
+import wrongSound from '../../sounds/wrong-answer.mp3';
 
 /**
  * This component encompasses all other React components as well as the high-level logic that compose the quiz  
@@ -39,16 +40,25 @@ function QuizCard(){
         getMisconceptions();
     },[]);
 
+    //Audio effect feedback 
+    const correctAnswerAudio = new Audio(correctSound);
+    const wrongAnswerAudio = new Audio(wrongSound);
+
     const handleAnswerButton = (isCorrect) => {
-        if (isCorrect) {
-            setScore(score + 1)
-        }
         setDisplayAnswers(true);
         setDisplayFeedback(true)
+        if (isCorrect) {
+            setScore(score + 1)
+            correctAnswerAudio.play();
+        }else{
+            wrongAnswerAudio.play();
+        }
 
     };
 
     const handleNextQuestion = () => { 
+        correctAnswerAudio.pause();
+        wrongAnswerAudio.pause();
         setDisplayFeedback(false);
         setDisplayAnswers(false);
 
