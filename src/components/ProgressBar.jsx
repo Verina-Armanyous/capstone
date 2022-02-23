@@ -31,11 +31,11 @@ function ProgressBar({indexOfDisplayedQuestion, totalNumberOfQuestions, level}) 
             backgroundColor: '#E7E7E7',
         },
         barColorPrimary: {
-            backgroundColor: '#AC2CC1',
+            backgroundColor: '#db2727',
         },
         })(LinearProgress)
     }
-    else if (level === "Difficult"){
+    else if (level === "Epic"){
         ColorLinearProgress = withStyles({
         root: {
             height: 10,},
@@ -43,7 +43,18 @@ function ProgressBar({indexOfDisplayedQuestion, totalNumberOfQuestions, level}) 
             backgroundColor: '#E7E7E7',
         },
         barColorPrimary: {
-            backgroundColor: '#365CF6',
+            backgroundColor: '#7c376f',
+        },
+        })(LinearProgress)}
+    else if (level === "Legendary"){
+        ColorLinearProgress = withStyles({
+        root: {
+            height: 10,},
+        colorPrimary: {
+            backgroundColor: '#E7E7E7',
+        },
+        barColorPrimary: {
+            backgroundColor: '#2e22b5',
         },
         })(LinearProgress)
     }
