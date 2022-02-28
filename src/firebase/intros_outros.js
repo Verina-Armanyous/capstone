@@ -20,13 +20,12 @@ export const information = {"Easy":{
         img: "" },
     'outro': {
         text: "Great job for making it that far! Think about how you can apply the knowledge you just gained to recognize and resist cultural misconceptions.",
-        img: "https://media.giphy.com/media/RIjVnmAtOD4l4c2Ert/giphy.gif"   },
+        img: "https://media.giphy.com/media/RIjVnmAtOD4l4c2Ert/giphy.gif"   }},
     "Legendary":{
-    'intro': {
-        text: "In this module, you will see some statistics about the world that some people might find surprising. Enjoy another perspective of the world using numbers.",
-        img: "" },
-    'outro': {
-        text: "Great job for making it that far! Think about how you can apply the knowledge you just gained to recognize and resist cultural misconceptions.",
-        img: "https://media.giphy.com/media/RIjVnmAtOD4l4c2Ert/giphy.gif"   }
+        'intro': {
+            text: "In this module, you will see some statistics about the world that some people might find surprising. Enjoy another perspective of the world using numbers.",
+            img: "" },
+        'outro': {
+            text: "Great job for making it that far! Think about how you can apply the knowledge you just gained to recognize and resist cultural misconceptions.",
+            img: "https://media.giphy.com/media/RIjVnmAtOD4l4c2Ert/giphy.gif"   }},
 }
-}}

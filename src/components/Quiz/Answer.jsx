@@ -53,7 +53,6 @@ function Answer({questions, indexOfDisplayedQuestion, displayAnswers, handleAnsw
             <Box>
             {questions[indexOfDisplayedQuestion].answerOptions.map((answerOption) => {
                 const [stylingClass, iconType] = getClass(answerOption)
-                console.log(iconType)
             return ( 
             <li onClick={(e) => {handleAnswerButtonWrapper(answerOption.isCorrect,e)}} key={answerOption.key} className = {stylingClass} >
                 {String(answerOption.answerText)}
