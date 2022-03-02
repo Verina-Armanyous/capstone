@@ -85,10 +85,15 @@ body {
   border: 5px solid black;
   background-color: var(--red);
 }
-button:hover {
+
+button:disabled,
+button[disabled]{
+  color: black;
+}
+/* button:hover {
   background-color: var(--blue);
   color: white;
-}
+} */
 
 .next-button {
   float: right;

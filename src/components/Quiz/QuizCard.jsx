@@ -12,6 +12,7 @@ import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import correctSound from '../../sounds/correct-answer.mp3';
 import wrongSound from '../../sounds/wrong-answer.mp3';
+import Feedback from './Feedback';
 
 /**
  * This component encompasses all other React components as well as the high-level logic that compose the quiz  
@@ -26,6 +27,7 @@ function QuizCard(){
     
     const [misconceptions, setMisconceptions] = useState([])
     const [isSetupComplete, setIsSetupComplete] = useState(false);
+    const [latestAnswer, setLatestAnswer] = useState(false);
     const { level } = useParams();
     function getMisconceptions(){
         db.collection(level).get().then((item) =>{
@@ -46,7 +48,8 @@ function QuizCard(){
 
     const handleAnswerButton = (isCorrect) => {
         setDisplayAnswers(true);
-        setDisplayFeedback(true)
+        setDisplayFeedback(true);
+        setLatestAnswer(isCorrect);
         if (isCorrect) {
             setScore(score + 1)
             correctAnswerAudio.play();
@@ -81,7 +84,7 @@ function QuizCard(){
             <>
                 <CardContent className='question-section'>
                     {displayFeedback?  <>
-                    <Question questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} showFeedback ={true}/>
+                    <Feedback questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} latestAnswer ={latestAnswer}/>
                     {misconceptions[displayedQuestion].feedbackImg !=='None'? <CardMedia style ={{maxWidth:'95%', padding:'10px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={misconceptions[displayedQuestion].feedbackImg}/>:<p></p>}
                     </>
                     :
