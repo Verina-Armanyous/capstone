@@ -13,7 +13,9 @@ import Button from '@mui/material/Button';
 import correctSound from '../../sounds/correct-answer.mp3';
 import wrongSound from '../../sounds/wrong-answer.mp3';
 import Feedback from './Feedback';
-
+import ExictedCharacter from '../../characters/excited-yuhoo.png'
+import ThinkingCharacter from '../../characters/hmm-thinking.png'
+import NeutralCharacter from '../../characters/neutral.png'
 /**
  * This component encompasses all other React components as well as the high-level logic that compose the quiz  
  * @returns{object} 
@@ -76,6 +78,8 @@ function QuizCard(){
     };
     return(
         (isSetupComplete) ?
+        <div className='parent'>
+        <img className='character' src={displayFeedback?latestAnswer?ExictedCharacter:ThinkingCharacter:NeutralCharacter} alt="ExictedCharacter" />
         <Card className='question-card' style={{padding:"20px"}}>
             <ProgressBar indexOfDisplayedQuestion = {displayedQuestion} totalNumberOfQuestions = {misconceptions.length} level={level}/>
             {displayScore? (
@@ -102,7 +106,8 @@ function QuizCard(){
                     Next
                 </Button>
             </CardActions>}
-        </Card>:<></>
+        </Card>
+        </div>:<></>
     );
 }
 export default QuizCard;

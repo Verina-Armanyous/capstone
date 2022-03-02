@@ -19,7 +19,11 @@ body {
   align-items: center;
   min-height: 100vh;
 }
-
+.parent {
+  display: flex;
+  align-items: center;
+  margin:10px;
+}
 /* Quiz  */
 .img_url{
   width: 90%;
@@ -96,6 +100,9 @@ button[disabled]{
   color: white;
 } */
 
+.character {
+  max-width: 12%;
+}
 .next-button {
   float: right;
   padding: 10px;
