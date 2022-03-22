@@ -12,7 +12,10 @@ import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import correctSound from '../../sounds/correct-answer.mp3';
 import wrongSound from '../../sounds/wrong-answer.mp3';
-
+import Feedback from './Feedback';
+import ExictedCharacter from '../../characters/excited-yuhoo.png'
+import ThinkingCharacter from '../../characters/hmm-thinking.png'
+import NeutralCharacter from '../../characters/neutral.png'
 /**
  * This component encompasses all other React components as well as the high-level logic that compose the quiz  
  * @returns{object} 
@@ -26,6 +29,7 @@ function QuizCard(){
     
     const [misconceptions, setMisconceptions] = useState([])
     const [isSetupComplete, setIsSetupComplete] = useState(false);
+    const [latestAnswer, setLatestAnswer] = useState(false);
     const { level } = useParams();
     function getMisconceptions(){
         db.collection(level).get().then((item) =>{
@@ -46,7 +50,8 @@ function QuizCard(){
 
     const handleAnswerButton = (isCorrect) => {
         setDisplayAnswers(true);
-        setDisplayFeedback(true)
+        setDisplayFeedback(true);
+        setLatestAnswer(isCorrect);
         if (isCorrect) {
             setScore(score + 1)
             correctAnswerAudio.play();
@@ -73,7 +78,9 @@ function QuizCard(){
     };
     return(
         (isSetupComplete) ?
-        <Card className='question-card' style={{padding:"20px"}}>
+        <div className='parent'>
+        <img className='character' src={displayFeedback?latestAnswer?ExictedCharacter:ThinkingCharacter:NeutralCharacter} alt="ExictedCharacter" />
+        <Card className='question-card' style={{padding:"15px 20px"}}>
             <ProgressBar indexOfDisplayedQuestion = {displayedQuestion} totalNumberOfQuestions = {misconceptions.length} level={level}/>
             {displayScore? (
                 <Score numberOfCorrectAnswers = {score} totalNumberOfQuestions = {misconceptions.length}  level = {level}/> ) : 
@@ -81,25 +88,26 @@ function QuizCard(){
             <>
                 <CardContent className='question-section'>
                     {displayFeedback?  <>
-                    <Question questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} showFeedback ={true}/>
-                    {misconceptions[displayedQuestion].feedbackImg !=='None'? <CardMedia style ={{maxWidth:'95%', padding:'10px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={misconceptions[displayedQuestion].feedbackImg}/>:<p></p>}
+                    <Feedback questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} latestAnswer ={latestAnswer}/>
+                    {misconceptions[displayedQuestion].feedbackImg !=='None'? <CardMedia style ={{maxWidth:'95%', maxHeight:'400px', padding:'0px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={misconceptions[displayedQuestion].feedbackImg}/>:<p></p>}
                     </>
                     :
                     <>
                     <Question questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} showFeedback ={false}/>
-                    {misconceptions[displayedQuestion].questionImg !=='None'? <CardMedia style ={{maxWidth:'95%', padding:'10px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={misconceptions[displayedQuestion].questionImg}/>:<p></p>}
+                    {misconceptions[displayedQuestion].questionImg !=='None'? <CardMedia style ={{maxWidth:'95%',maxHeight:'400px', padding:'0px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={misconceptions[displayedQuestion].questionImg}/>:<p></p>}
                     </>
                      }
                 < Answer questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} displayAnswers={displayAnswers} handleAnswerButton={handleAnswerButton}/>
                 </CardContent>
             </>)}
             {displayAnswers && 
-            <CardActions>
-                <Button onClick = {handleNextQuestion} size="small" style={{flex: "right", right: "0", padding: "10px", backgroundColor:"black", color:"white"}}>
+            <CardActions style={{display: "flex", justifyContent: "flex-end", padding:'0', marginTop:'-25px'}}>
+                <Button onClick = {handleNextQuestion} size="small" style={{flex: "right", right: "0", padding: "10px", backgroundColor:"black", color:"white", margin:"0"}}>
                     Next
                 </Button>
             </CardActions>}
-        </Card>:<></>
+        </Card>
+        </div>:<></>
     );
 }
 export default QuizCard;

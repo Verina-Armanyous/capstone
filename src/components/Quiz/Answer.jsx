@@ -1,10 +1,5 @@
 import React, {useState} from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Box';
-import Checkbox from '@mui/material/Checkbox';
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
-import CircleIcon from '@mui/icons-material/Circle';
 import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
 /**
@@ -19,7 +14,6 @@ import CloseIcon from '@mui/icons-material/Close';
  */
 function Answer({questions, indexOfDisplayedQuestion, displayAnswers, handleAnswerButton}) {
     const [selectedAnswer, setSelectedAnswer] = useState(null)
-    const [iconShown, setIconShown] = useState(null)
     const getClass = (answerOption) => {
         if (!displayAnswers){
             return ["bg-regular answer-button", "none"]
@@ -47,17 +41,16 @@ function Answer({questions, indexOfDisplayedQuestion, displayAnswers, handleAnsw
         handleAnswerButton(isCorrect);
         
     }
-
     return (
         <div className='answer-section'>
             <Box>
             {questions[indexOfDisplayedQuestion].answerOptions.map((answerOption) => {
                 const [stylingClass, iconType] = getClass(answerOption)
             return ( 
-            <li onClick={(e) => {handleAnswerButtonWrapper(answerOption.isCorrect,e)}} key={answerOption.key} className = {stylingClass} >
+            <button disabled={displayAnswers} onClick={(e) => {handleAnswerButtonWrapper(answerOption.isCorrect,e)}} key={answerOption.key} className = {stylingClass} >
                 {String(answerOption.answerText)}
                 {iconType==='none'? "":iconType==='tick'? <DoneIcon></DoneIcon>:<CloseIcon></CloseIcon>}
-            </li>
+            </button>
             )})}
             </Box>
         </div>

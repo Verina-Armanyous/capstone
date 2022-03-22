@@ -10,7 +10,6 @@ import {useParams } from 'react-router-dom';
 import { Link as RouterLink} from 'react-router-dom';
 export default function Intro() {
         const {level} = useParams();
-        console.log(level)
     return (
         <Card className='question-card' style={{padding:"20px"}}>
                 <CardContent className='question-section'>
