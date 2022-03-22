@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
 /**
@@ -42,7 +41,6 @@ function Answer({questions, indexOfDisplayedQuestion, displayAnswers, handleAnsw
         handleAnswerButton(isCorrect);
         
     }
-
     return (
         <div className='answer-section'>
             <Box>

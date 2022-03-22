@@ -80,7 +80,7 @@ function QuizCard(){
         (isSetupComplete) ?
         <div className='parent'>
         <img className='character' src={displayFeedback?latestAnswer?ExictedCharacter:ThinkingCharacter:NeutralCharacter} alt="ExictedCharacter" />
-        <Card className='question-card' style={{padding:"20px"}}>
+        <Card className='question-card' style={{padding:"15px 20px"}}>
             <ProgressBar indexOfDisplayedQuestion = {displayedQuestion} totalNumberOfQuestions = {misconceptions.length} level={level}/>
             {displayScore? (
                 <Score numberOfCorrectAnswers = {score} totalNumberOfQuestions = {misconceptions.length}  level = {level}/> ) : 
@@ -89,20 +89,20 @@ function QuizCard(){
                 <CardContent className='question-section'>
                     {displayFeedback?  <>
                     <Feedback questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} latestAnswer ={latestAnswer}/>
-                    {misconceptions[displayedQuestion].feedbackImg !=='None'? <CardMedia style ={{maxWidth:'95%', padding:'10px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={misconceptions[displayedQuestion].feedbackImg}/>:<p></p>}
+                    {misconceptions[displayedQuestion].feedbackImg !=='None'? <CardMedia style ={{maxWidth:'95%', maxHeight:'400px', padding:'0px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={misconceptions[displayedQuestion].feedbackImg}/>:<p></p>}
                     </>
                     :
                     <>
                     <Question questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} showFeedback ={false}/>
-                    {misconceptions[displayedQuestion].questionImg !=='None'? <CardMedia style ={{maxWidth:'95%', padding:'10px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={misconceptions[displayedQuestion].questionImg}/>:<p></p>}
+                    {misconceptions[displayedQuestion].questionImg !=='None'? <CardMedia style ={{maxWidth:'95%',maxHeight:'400px', padding:'0px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={misconceptions[displayedQuestion].questionImg}/>:<p></p>}
                     </>
                      }
                 < Answer questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} displayAnswers={displayAnswers} handleAnswerButton={handleAnswerButton}/>
                 </CardContent>
             </>)}
             {displayAnswers && 
-            <CardActions>
-                <Button onClick = {handleNextQuestion} size="small" style={{flex: "right", right: "0", padding: "10px", backgroundColor:"black", color:"white"}}>
+            <CardActions style={{display: "flex", justifyContent: "flex-end", padding:'0', marginTop:'-25px'}}>
+                <Button onClick = {handleNextQuestion} size="small" style={{flex: "right", right: "0", padding: "10px", backgroundColor:"black", color:"white", margin:"0"}}>
                     Next
                 </Button>
             </CardActions>}

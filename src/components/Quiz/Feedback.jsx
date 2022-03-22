@@ -1,7 +1,4 @@
 import React from 'react';
-import Typography from '@mui/material/Typography';
-import ExictedCharacter from '../../characters/excited-yuhoo.png'
-
 
 /**
  * This component shows the question displayed one at a time 

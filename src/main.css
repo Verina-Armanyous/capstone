@@ -88,7 +88,7 @@ body {
   margin: auto;
   margin-bottom: 10px;
   display: flex;
-  padding: 10px;
+  padding: 8px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -130,7 +130,7 @@ button[disabled]{
   padding: 10px;
   background-color: var(--blue);
   color: white;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .next-button:hover {
@@ -152,15 +152,14 @@ button[disabled]{
   transition: width 0.2s ease-in;
 }
 
-
 /* ============================================================================================================================
 == RECTANGLE-BORDER STYLE WITH CURVE
 ** ============================================================================================================================ */
 /* the speech bubble styling is adapted from https://nicolasgallagher.com/pure-css-speech-bubbles/demo/ */
 .rectangle-speech-border {
   position:relative;
-  padding:20px 15px;
-  margin:1em 0 3em;
+  padding:10px 15px;
+  margin:0.5em 0 0.5em;
   border:2px solid black;
   text-align:center;
   color:#333;

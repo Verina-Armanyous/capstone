@@ -47,19 +47,18 @@ function Score({numberOfCorrectAnswers, totalNumberOfQuestions, level}) {
             <Typography variant="h5">Yayy! You scored {numberOfCorrectAnswers} out of {totalNumberOfQuestions}</Typography>
             <Typography gutterBottom variant="h6" component="div">
                         {information[level].outro.text} 
-                    </Typography>
-                    {level==="Legendary"?<Confetti/>:
+                    </Typography><Confetti/>
                     <>
                     {information[level].outro.img !==''? <CardMedia style ={{maxWidth:'95%', padding:'10px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={information[level].outro.img }/>:<p></p>}
-                    {information[level].outro.video? <iframe width="700" height="550" src={information[level].outro.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe> :<p></p>} </>}
+                    {information[level].outro.video? <iframe width="700" height="550" src={`${information[level].outro.video}?hl=en&amp;cc_load_policy=1;&cc_lang_pref=en`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"></iframe> :<p></p>} </>
  
             <Button to='/' component={RouterLink} size="medium" variant="contained" style={{backgroundColor: 'black'}} onClick={unlock}>Level up</Button>
             </div>
     }
     const getFailMessage = () => {
-            return <div> 
+            return <div className='card-action'> 
                 <Typography variant="h6">Oh no. You scored {numberOfCorrectAnswers} out of {totalNumberOfQuestions}. You are almost there! </Typography>
-                <Button onClick={refreshPage} size="medium" variant="contained" style={{backgroundColor: 'black', marginTop:'10'}}>Try Again</Button>
+                <Button onClick={refreshPage} size="medium" variant="contained"  style={{backgroundColor: 'black', marginTop:'10'}}>Try Again</Button>
             </div>
     };
 
