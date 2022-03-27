@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import LevelsContext from '../../state/LevelsContext';
 import Confetti from 'react-confetti';
+import ShareButton from './ShareButton';
 /**
  * This component shows the final score of the user 
  * @param {number} numberOfCorrectAnswers the number of questions answered correctly by the user 
@@ -52,7 +53,7 @@ function Score({numberOfCorrectAnswers, totalNumberOfQuestions, level}) {
                     {information[level].outro.img !==''? <CardMedia style ={{maxWidth:'95%', padding:'10px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={information[level].outro.img }/>:<p></p>}
                     {information[level].outro.video? <iframe width="700" height="550" src={`${information[level].outro.video}?hl=en&amp;cc_load_policy=1;&cc_lang_pref=en`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"></iframe> :<p></p>} </>
  
-            <Button to='/' component={RouterLink} size="medium" variant="contained" style={{backgroundColor: 'black'}} onClick={unlock}>Level up</Button>
+            {level==='Legendary'? <ShareButton/>:<Button to='/' component={RouterLink} size="medium" variant="contained" style={{backgroundColor: 'black'}} onClick={unlock}>Level up</Button>}
             </div>
     }
     const getFailMessage = () => {

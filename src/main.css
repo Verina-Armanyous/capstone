@@ -34,7 +34,7 @@ body {
   width: 70vw;
   min-height: 75vh;
   border-radius: 15px;
-  padding: 10px;
+  padding: 5px;
   box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.5);
   justify-content: space-evenly;
 }
@@ -110,7 +110,12 @@ body {
   border: 5px solid black;
   background-color: var(--red);
 }
-
+.correct-message{
+  color: var(--green);
+}
+.incorrect-message{
+  color: var(--red);
+}
 button:disabled,
 button[disabled]{
   color: black;

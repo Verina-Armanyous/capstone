@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ProgressBar from '../ProgressBar';
 import Score from './Score';
 import Answer from './Answer';
+import Message from './Message'
 import Question from './Question';
 import {db} from "../../firebase/config";
 import {useParams } from 'react-router-dom';
@@ -79,9 +80,10 @@ function QuizCard(){
     return(
         (isSetupComplete) ?
         <div className='parent'>
-        <img className='character' src={displayFeedback?latestAnswer?ExictedCharacter:ThinkingCharacter:NeutralCharacter} alt="ExictedCharacter" />
+        <img className='character' src={displayFeedback?latestAnswer?ExictedCharacter:ThinkingCharacter:NeutralCharacter} alt="character" />
         <Card className='question-card' style={{padding:"15px 20px"}}>
             <ProgressBar indexOfDisplayedQuestion = {displayedQuestion} totalNumberOfQuestions = {misconceptions.length} level={level}/>
+            {displayFeedback?<Message latestAnswer ={latestAnswer}/>:<></>}
             {displayScore? (
                 <Score numberOfCorrectAnswers = {score} totalNumberOfQuestions = {misconceptions.length}  level = {level}/> ) : 
                 (

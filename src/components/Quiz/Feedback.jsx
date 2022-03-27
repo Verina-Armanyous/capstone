@@ -7,7 +7,7 @@ import React from 'react';
  * @param {number} indexOfDisplayedQuestion -- the number of current question 
  * @param {boolean} showFeedback -- indicates whether to show the feedback on each question 
  */
-function Feedback({questions, indexOfDisplayedQuestion, latestAnswer}) {
+function Feedback({questions, indexOfDisplayedQuestion}) {
     return (  
         <div className='rectangle-speech-border'>
             {questions[indexOfDisplayedQuestion].feedback}
