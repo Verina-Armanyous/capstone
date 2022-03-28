@@ -17,7 +17,7 @@ function Question({questions, indexOfDisplayedQuestion, showFeedback}) {
     }
     else{
         return (
-           <Typography gutterBottom variant="h5" component="div">
+           <Typography gutterBottom variant="h6">
             {questions[indexOfDisplayedQuestion].questionText}
         </Typography>
 

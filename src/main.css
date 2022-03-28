@@ -62,7 +62,6 @@ body {
 .speech-bubble {
 	position: relative;
 	background: #E7E7E7;
-
   border: 1px black;
 }
 
@@ -111,10 +110,16 @@ body {
   background-color: var(--red);
 }
 .correct-message{
-  color: var(--green);
+  padding: 2px;
+  margin: 0px;
+  color: #57d357;
+  font-weight: bold;
 }
 .incorrect-message{
+  padding: 2px;
+  margin: 0px;
   color: var(--red);
+  font-weight: bold;
 }
 button:disabled,
 button[disabled]{
@@ -166,7 +171,7 @@ button[disabled]{
   padding:10px 15px;
   margin:0.5em 0 0.5em;
   border:2px solid black;
-  text-align:center;
+  text-align:left;
   color:#333;
   background:#fff;
   /* css3 */

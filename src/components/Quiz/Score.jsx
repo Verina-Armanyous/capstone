@@ -45,8 +45,8 @@ function Score({numberOfCorrectAnswers, totalNumberOfQuestions, level}) {
     
     const getSuccessMessage = () => {
         return <div style={{alignItems: "center", margin: "auto"}}> 
-            <Typography variant="h5">Yayy! You scored {numberOfCorrectAnswers} out of {totalNumberOfQuestions}</Typography>
-            <Typography gutterBottom variant="h6" component="div">
+            <Typography variant="h5">Yay, you scored {numberOfCorrectAnswers} out of {totalNumberOfQuestions}!</Typography>
+            <Typography style= {{textAlign:'left'}} gutterBottom variant="h6" component="div">
                         {information[level].outro.text} 
                     </Typography><Confetti/>
                     <>
@@ -58,7 +58,7 @@ function Score({numberOfCorrectAnswers, totalNumberOfQuestions, level}) {
     }
     const getFailMessage = () => {
             return <div className='card-action'> 
-                <Typography variant="h6">Oh no. You scored {numberOfCorrectAnswers} out of {totalNumberOfQuestions}. You are almost there! </Typography>
+                <Typography variant="h5">Oh no. You scored {numberOfCorrectAnswers} out of {totalNumberOfQuestions}. You are almost there! </Typography>
                 <Button onClick={refreshPage} size="medium" variant="contained"  style={{backgroundColor: 'black', marginTop:'10'}}>Try Again</Button>
             </div>
     };
