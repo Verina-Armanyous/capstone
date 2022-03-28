@@ -80,8 +80,10 @@ function QuizCard(){
     return(
         (isSetupComplete) ?
         <div className='parent'>
-        <img className='character' src={displayFeedback?latestAnswer?ExictedCharacter:ThinkingCharacter:NeutralCharacter} alt="character" />
-        <Card className='question-card' style={{padding:"15px 20px"}}>
+        {displayFeedback?     
+        <img className='character' src={latestAnswer?ExictedCharacter:ThinkingCharacter} alt="character" />:
+        <></>}
+            <Card className='question-card' style={{padding:"15px 20px"}}>
             <ProgressBar indexOfDisplayedQuestion = {displayedQuestion} totalNumberOfQuestions = {misconceptions.length} level={level}/>
             {displayFeedback?<Message latestAnswer ={latestAnswer}/>:<></>}
             {displayScore? (
