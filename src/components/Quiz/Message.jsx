@@ -11,8 +11,8 @@ function Message({latestAnswer}) {
     var displayedMessage;
     var styling;
     var random;
-    const correctMessageArray = ['You are on a roll!', 'Keep up the good work!', 'You got it!', 'Impressive', 'Great job!'];
-    const incorrectMessageArray = ['Opps, try again :)', 'Try again'];
+    const correctMessageArray = ['You are on a roll!', 'Keep up the good work!', 'You got it!', 'Impressive!', 'Yess!'];
+    const incorrectMessageArray = ['Opps, you will get it next time :)', 'Nope, but you were so close!'];
     if (latestAnswer){
         random = Math.floor(Math.random() * correctMessageArray.length);
         displayedMessage = correctMessageArray[random]
