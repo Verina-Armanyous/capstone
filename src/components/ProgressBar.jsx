@@ -64,7 +64,7 @@ function ProgressBar({indexOfDisplayedQuestion, totalNumberOfQuestions, level}) 
     return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box sx={{ width: '100%', mr: 1 }}>
-        <ColorLinearProgress height="3" variant="determinate" value={percentage}/>
+        <ColorLinearProgress height="3" variant="determinate" value={percentage} style={{borderRadius:"20px"}}/>
       </Box>
       <Box>
         <Typography variant="body2" color="text.secondary">{`${percentage}%`}</Typography>

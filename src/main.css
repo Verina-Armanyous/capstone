@@ -146,21 +146,7 @@ button[disabled]{
 .next-button:hover {
   cursor: pointer;
 }
-/* progress bar component */
-.progress-bar {
-  height: 20px;
-  width: 350px;
-  border-radius: 50px;
-  border: 1px solid #333;
-  margin: 0px auto 5px auto;
-}
 
-.filler {
-  background: var(--yellow);
-  height: 100%;
-  border-radius: inherit;
-  transition: width 0.2s ease-in;
-}
 
 /* ============================================================================================================================
 == RECTANGLE-BORDER STYLE WITH CURVE
