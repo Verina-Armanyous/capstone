@@ -9,7 +9,7 @@ function ShareButton(){
       <RWebShare
         data={{
           text: "Learn more about other cultures and be a true global citizen",
-          url: "https://cocky-mahavira-14d902.netlify.app/",
+          url: "https://debunk-my-misconceptions.netlify.app/",
           title: "Debunk my misconceptions",
         }}
       >
