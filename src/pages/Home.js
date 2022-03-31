@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import LevelCard from '../components/Home/LevelCard';
 import LevelsContext from '../state/LevelsContext';
 import ResetProgressButton from '../components/Home/ResetProgressButton';
+import Footer from '../components/Home/Footer';
 export default function Home() {
     const {levels} = useContext(LevelsContext);
     return(
@@ -14,6 +15,7 @@ export default function Home() {
                  )
                }
        </div>
+       <Footer/>
    </div>
     )
 

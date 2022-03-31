@@ -218,3 +218,10 @@ button[disabled]{
 .css-46bh2p-MuiCardContent-root {
   padding: 0px !important;
 }
+
+a:visited {
+  text-decoration: none;
+}
+a:link {
+  text-decoration: none;
+}
