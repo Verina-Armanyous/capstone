@@ -4,7 +4,9 @@ import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 
-
+/**
+ *  A button to reset the progress of the application, so all levels (except the easy one) become locked again 
+ */
 export default function ResetProgressButton() {
     const clearCacheData = () => {
         localStorage.clear();
