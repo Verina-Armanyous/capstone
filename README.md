@@ -1,46 +1,33 @@
-# Getting Started with Create React App
+# Debunk my misconceptions 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A game-like application where users are quizzed on curated misconceptions and cultural stereotypes. Based on their responses, the user receives instant feedback to correct these myths. Using such a tool replaces preconceptions with new data-based facts about countries, exposing users to accurate cultural information about other countries.  
 
-## Available Scripts
+Check out the application [here](https://debunk-my-misconceptions.netlify.app/), and let us know your score! 
 
-In the project directory, you can run:
+## Application content 
+The application is divided into four levels that get harder progressively 
 
-### `yarn start`
+1. Easy level (world media), featuring misconceptions that show how news outlets, Hollywood movies, and social media can perpetuate cultural misconceptions and influence our world perception.
+2. Medium and Epic levels (world map), discussing the current most popular world map, why the map can be misleading and how it affects our perception of power distribution around the world.
+3. Legendary (world statistics and numbers), providing another perspective of the world using numbers.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This project was designed and coded with extensibility in mind to allow for the addition of other misconceptions to the app easily. If you would like to build on the project, follow the guide below.
 
-### `yarn test`
+#### 1. Clone the repository 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/Verina-Armanyous/capstone.git
+```
+#### 2. Set up Firebase store 
+You can follow the official documentation [here](https://firebase.google.com/)
 
-### `yarn build`
+#### 3. Create .env file 
+Create a .env file in the cloned repository. Then, go to the project settings page on firebase website, and copy the firebase configuration information in the .env file. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### 4. Make a copy of the misconceptions Google sheets 
+Visit this [link](https://docs.google.com/spreadsheets/d/1RkLxbg0SB8CDLkKnwEwjqyuaXmhztVg2U5J5J20RC6Y/edit#gid=597552911), and make a copy of the google sheets. Notice how information of each level is located in a separate sheet. You can add either a new level by creating a new sheet, or add more misconceptions to the existing level by filling additional rows. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### 5. Connect Apps Script to your Google sheets 
+Connect Apps Script by running this [script](https://github.com/Verina-Armanyous/capstone/blob/master/script.js) in your Google sheets. Don't forget to change the client email, private key, and project id. This should trigger the data ingestion process from Google sheets to firebase which is how React fetches the data. 
