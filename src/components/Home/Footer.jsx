@@ -1,6 +1,10 @@
 import React from 'react';
 
 
+/**
+ * Represents footer of home page 
+ * @returns {footer} app footer
+ */
 export default function Footer() {
 
     return (
