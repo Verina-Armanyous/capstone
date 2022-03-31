@@ -1,11 +1,8 @@
 import React from 'react';
 
 /**
- * This component shows the question displayed one at a time 
- * @param {Array} questions -- This includes a list of questions where each question 
- * has the question text, answer options, and feedback 
- * @param {number} indexOfDisplayedQuestion -- the number of current question 
- * @param {boolean} showFeedback -- indicates whether to show the feedback on each question 
+ * A component that shows an encouraging message upon user selection 
+ * @param {boolean} latestAnswer - Indicates whether the last selected answer is correct or incorrect 
  */
 function Message({latestAnswer}) {
     var displayedMessage;
