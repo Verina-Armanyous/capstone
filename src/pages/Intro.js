@@ -8,6 +8,10 @@ import Typography from '@mui/material/Typography';
 import {information} from '../firebase/intros_outros'
 import {useParams } from 'react-router-dom';
 import { Link as RouterLink} from 'react-router-dom';
+
+/**
+ * The Intro page for each level  
+ */
 export default function Intro() {
         const {level} = useParams();
     return (

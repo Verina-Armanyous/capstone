@@ -6,8 +6,8 @@ import { withStyles } from '@mui/styles';
 
 /**
  * This component represents the progress bar that shows the progress throughout the game 
- * @param {number} indexOfDisplayedQuestion indicates the index of the current question 
- * @param {number} totalNumberOfQuestions indicates the total number of questions in the database
+ * @param {number} indexOfDisplayedQuestion - indicates the index of the current question 
+ * @param {number} totalNumberOfQuestions - indicates the total number of questions in the database
  */
 function ProgressBar({indexOfDisplayedQuestion, totalNumberOfQuestions, level}) {
     // Changing the inherited material UI style
