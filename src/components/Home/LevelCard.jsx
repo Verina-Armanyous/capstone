@@ -12,6 +12,13 @@ const buttonStyle = {
     justifyContent: 'left',
     marginLeft: 'auto',
 }
+/**
+ * 
+ * @param {string} level - level name 
+ * @param {string} description - description of level 
+ * @param {number} numberOfQuestions - number of questions per level 
+ * @param {string} status - shows whether the level is unlocked or locked 
+ */
 export default function LevelCard({level, description, numberOfQuestions, status}) {
     let style = { minWidth: 300, height:140,borderRadius:10, borderColor:'black', marginBottom:20, padding:5}
     if (level === 'Easy'){
