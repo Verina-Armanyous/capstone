@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { RWebShare } from "react-web-share";
 import Button from '@mui/material/Button';
 
-
+/**
+ * A component that allow sharing the application with others 
+ */
 function ShareButton(){
   return (
     <div>

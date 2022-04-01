@@ -2,6 +2,10 @@ import React, {createContext} from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
 const LevelsContext = createContext();
 
+
+/**
+ * Context for levels information 
+ */
 export function LevelsProvider ({children}){
     const [levels, setLevels] = useLocalStorage('levels-state',[
         {level: 'Easy', status:'unlocked', description:"World Media", numberOfQuestions: "6",},
