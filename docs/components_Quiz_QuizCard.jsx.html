@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Quiz/QuizCard.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Quiz/QuizCard.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, {useState, useEffect} from 'react';
+import ProgressBar from '../ProgressBar';
+import Score from './Score';
+import Answer from './Answer';
+import Message from './Message'
+import Question from './Question';
+import {db} from "../../firebase/config";
+import {useParams } from 'react-router-dom';
+import CardMedia from '@mui/material/CardMedia';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
+import correctSound from '../../sounds/correct-answer.mp3';
+import wrongSound from '../../sounds/wrong-answer.mp3';
+import Feedback from './Feedback';
+import ExictedCharacter from '../../characters/excited-yuhoo.png'
+import ThinkingCharacter from '../../characters/hmm-thinking.png'
+import NeutralCharacter from '../../characters/neutral.png'
+/**
+ * This component encompasses all other React components as well as the high-level logic that compose the quiz  
+ * @returns{object} 
+ */
+function QuizCard(){
+    const [displayedQuestion, setDisplayedQuestion] = useState(0);
+    const [score, setScore] = useState(0);
+    const [displayScore, setDisplayScore] = useState(false);
+    const [displayAnswers, setDisplayAnswers] = useState(false);
+    const [displayFeedback, setDisplayFeedback] = useState(false);
+    
+    const [misconceptions, setMisconceptions] = useState([])
+    const [isSetupComplete, setIsSetupComplete] = useState(false);
+    const [latestAnswer, setLatestAnswer] = useState(false);
+    const { level } = useParams();
+    function getMisconceptions(){
+        db.collection(level).get().then((item) =>{
+        let items = item.docs.map((doc) => doc.data());
+        items = items.sort(() => Math.random() - 0.5)
+        setMisconceptions(items);
+        setIsSetupComplete(true);
+        })
+    }
+
+    useEffect(() => {
+        getMisconceptions();
+    },[]);
+
+    //Audio effect feedback 
+    const correctAnswerAudio = new Audio(correctSound);
+    const wrongAnswerAudio = new Audio(wrongSound);
+
+    const handleAnswerButton = (isCorrect) => {
+        setDisplayAnswers(true);
+        setDisplayFeedback(true);
+        setLatestAnswer(isCorrect);
+        if (isCorrect) {
+            setScore(score + 1)
+            correctAnswerAudio.play();
+        }else{
+            wrongAnswerAudio.play();
+        }
+
+    };
+
+    const handleNextQuestion = () => { 
+        correctAnswerAudio.pause();
+        wrongAnswerAudio.pause();
+        setDisplayFeedback(false);
+        setDisplayAnswers(false);
+
+        const nextQuestion = displayedQuestion + 1;
+        if (nextQuestion &lt; misconceptions.length) {
+            setDisplayedQuestion(nextQuestion)
+        } else {
+            setDisplayedQuestion(nextQuestion)
+            setDisplayScore(true)
+        }
+
+    };
+    return(
+        (isSetupComplete) ?
+        &lt;div className='parent'>
+        {displayFeedback?     
+        &lt;img className='character' src={latestAnswer?ExictedCharacter:ThinkingCharacter} alt="character" />:
+        &lt;>&lt;/>}
+            &lt;Card className='question-card' style={{padding:"15px 20px"}}>
+            &lt;ProgressBar indexOfDisplayedQuestion = {displayedQuestion} totalNumberOfQuestions = {misconceptions.length} level={level}/>
+            {displayFeedback?&lt;Message latestAnswer ={latestAnswer}/>:&lt;>&lt;/>}
+            {displayScore? (
+                &lt;Score numberOfCorrectAnswers = {score} totalNumberOfQuestions = {misconceptions.length}  level = {level}/> ) : 
+                (
+            &lt;>
+                &lt;CardContent className='question-section'>
+                    {displayFeedback?  &lt;>
+                    &lt;Feedback questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} latestAnswer ={latestAnswer}/>
+                    {misconceptions[displayedQuestion].feedbackImg !=='None'? &lt;CardMedia style ={{maxWidth:'95%', maxHeight:'400px', padding:'0px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={misconceptions[displayedQuestion].feedbackImg}/>:&lt;p>&lt;/p>}
+                    &lt;/>
+                    :
+                    &lt;>
+                    &lt;Question questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} showFeedback ={false}/>
+                    {misconceptions[displayedQuestion].questionImg !=='None'? &lt;CardMedia style ={{maxWidth:'95%',maxHeight:'400px', padding:'0px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={misconceptions[displayedQuestion].questionImg}/>:&lt;p>&lt;/p>}
+                    &lt;/>
+                     }
+                &lt; Answer questions = {misconceptions} indexOfDisplayedQuestion={displayedQuestion} displayAnswers={displayAnswers} handleAnswerButton={handleAnswerButton}/>
+                &lt;/CardContent>
+            &lt;/>)}
+            {displayAnswers &amp;&amp; 
+            &lt;CardActions style={{display: "flex", justifyContent: "flex-end", padding:'0', marginTop:'-25px'}}>
+                &lt;Button onClick = {handleNextQuestion} size="small" style={{flex: "right", right: "0", padding: "10px", backgroundColor:"black", color:"white", margin:"0"}}>
+                    Next
+                &lt;/Button>
+            &lt;/CardActions>}
+        &lt;/Card>
+        &lt;/div>:&lt;>&lt;/>
+    );
+}
+export default QuizCard;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Answer">Answer</a></li><li><a href="global.html#Feedback">Feedback</a></li><li><a href="global.html#LevelsProvider">LevelsProvider</a></li><li><a href="global.html#Message">Message</a></li><li><a href="global.html#ProgressBar">ProgressBar</a></li><li><a href="global.html#Question">Question</a></li><li><a href="global.html#QuizCard">QuizCard</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#ShareButton">ShareButton</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Mar 30 2022 23:02:17 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

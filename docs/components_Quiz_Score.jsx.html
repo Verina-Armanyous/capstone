@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Quiz/Score.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Quiz/Score.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, {useContext} from 'react';
+import Button from '@mui/material/Button';
+import { Link as RouterLink} from 'react-router-dom';
+import {information} from "../../firebase/intros_outros";
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import LevelsContext from '../../state/LevelsContext';
+import Confetti from 'react-confetti';
+import ShareButton from './ShareButton';
+/**
+ * This component shows the final score of the user 
+ * @param {number} numberOfCorrectAnswers the number of questions answered correctly by the user 
+ * @param {number} totalNumberOfQuestions total number of questions in tthe database 
+ */
+function Score({numberOfCorrectAnswers, totalNumberOfQuestions, level}) {
+    const {setStatusLevel } = useContext(LevelsContext);
+
+    function refreshPage() {
+        window.location.reload();
+    }
+    const unlock =()=> {
+        if (level==='Easy'){
+            setStatusLevel('Medium', 'unlocked')}
+        else if (level==='Medium'){
+            setStatusLevel('Epic', 'unlocked')
+        }
+        else if (level==='Epic'){
+            setStatusLevel('Legendary', 'unlocked')
+        }
+        }
+    const config = {
+            angle: 90,
+            spread: 360,
+            startVelocity: 40,
+            elementCount: "200",
+            dragFriction: 0.12,
+            duration: "4000",
+            stagger: 3,
+            width: "10px",
+            height: "10px",
+            perspective: "500px",
+            colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
+          };
+    
+    
+    const getSuccessMessage = () => {
+        return &lt;div style={{alignItems: "center", margin: "auto"}}> 
+            &lt;Typography variant="h5">Yay, you scored {numberOfCorrectAnswers} out of {totalNumberOfQuestions}!&lt;/Typography>
+            &lt;Typography style= {{textAlign:'left'}} gutterBottom variant="h6" component="div">
+                        {information[level].outro.text} 
+                    &lt;/Typography>&lt;Confetti numberOfPieces="100" recycle='false'/>
+                    &lt;>
+                    {information[level].outro.img !==''? &lt;CardMedia style ={{maxWidth:'95%', padding:'10px', objectFit: 'contain'}}component="img" alt="green iguana" height="400" image={information[level].outro.img }/>:&lt;p>&lt;/p>}
+                    {information[level].outro.video? &lt;iframe width="700" height="550" src={`${information[level].outro.video}?hl=en&amp;amp;cc_load_policy=1;&amp;cc_lang_pref=en`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;">&lt;/iframe> :&lt;p>&lt;/p>} &lt;/>
+ 
+            {level==='Legendary'? 
+            &lt;>
+                &lt;ShareButton/> &lt;Button to='/' component={RouterLink} size="medium" variant="contained" style={{backgroundColor: 'black', marginTop:'10px'}} onClick={unlock}>Home Page&lt;/Button>
+            &lt;/> :
+            &lt;Button to='/' component={RouterLink} size="medium" variant="contained" style={{backgroundColor: 'black'}} onClick={unlock}>Level up&lt;/Button>}
+            &lt;/div>
+    }
+    const getFailMessage = () => {
+            return &lt;div className='card-action'> 
+                &lt;Typography variant="h5">Oh no. You scored {numberOfCorrectAnswers} out of {totalNumberOfQuestions}. You are almost there! &lt;/Typography>
+                &lt;Button onClick={refreshPage} size="medium" variant="contained"  style={{backgroundColor: 'black', marginTop:'10'}}>Try Again&lt;/Button>
+            &lt;/div>
+    };
+
+    const passingScore = Math.round(totalNumberOfQuestions/2);
+
+    return(
+        &lt;div style ={{textAlign:'center'}}>
+        {numberOfCorrectAnswers >= passingScore? getSuccessMessage(): getFailMessage()}
+        &lt;/div>
+    )}
+
+
+
+export default Score;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Answer">Answer</a></li><li><a href="global.html#Feedback">Feedback</a></li><li><a href="global.html#LevelsProvider">LevelsProvider</a></li><li><a href="global.html#Message">Message</a></li><li><a href="global.html#ProgressBar">ProgressBar</a></li><li><a href="global.html#Question">Question</a></li><li><a href="global.html#QuizCard">QuizCard</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#ShareButton">ShareButton</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Mar 30 2022 23:02:17 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
